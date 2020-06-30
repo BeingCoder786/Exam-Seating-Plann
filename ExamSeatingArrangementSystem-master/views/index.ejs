@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='stylesheets/modals.css' />
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+</head>
+<body onload="sessionStorage.clear()">
+  <style>
+  .jumbotron 
+  {
+  /* background-color:#007880; */
+  color:turquoise;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-image: url("/images/header5.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover ;
+  height: 100%;
+  }
+  .navbar
+  {
+    background-color:#005995;
+  }
+  .footer {
+   /* position: fixed; */
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+   height: 40px;
+}
+   h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+</style>
+<div class="jumbotron text-center" style="margin-bottom:0" >
+  <h1 style="color:white;">Exam Seating Arrangement System</h1> 
+</div>
+<div class="navbar navbar-inverse " role="navigation">
+    <div class="container-fluid" style="height: 40%;">
+        <div class="navbar-header">
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+               </button> <a class="navbar-brand" href="/">Home</a> 
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+             <li><a href="/about">About</a></li>
+             <li><a href="/contactus">Contact-Us</a></li>
+             <li><a href="/adminlogin">Admin</a></li>
+         
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3 " onclick="document.getElementById('id01').style.display='block'" style="margin-top: 15%;">Login</button> </li>
+
+                <li>
+                        <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" onclick="document.getElementById('id02').style.display='block'" style="margin-top: 10%;margin-left: 10%;">Register</button> </li>
+             </li>
+            </ul>
+        </div>
+    </div>
+</div>
+ 
+<h3 style="color: green;"><%= typeof msg != 'undefined' ? msg : '' %></h3>
+
+<!-- Modal HTML -->
+<!--Modal Login form -->
+
+<div id="id01" class="modal">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="avatar">
+            <img src="images/avatar.png" alt="Avatar">
+            <!-- <span class="glyphicon glyphicon-user"></span> -->
+          </div>				
+          <h4 class="modal-title">Log In</h4>	
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form action="login" method="post">
+            <div class="form-group">
+                <label for="uname"><b>UserName</b></label>
+                <input type="text" class="form-control" name="username" placeholder="Enter UserName" required><br>
+            </div>
+            <div class="form-group">
+                <label for="psw"><b>Password</b></label>
+                <input type="password" class="form-control" name="password" placeholder="Password"  id="myInput" required> 
+                <input type="checkbox" onclick="myFunction()">&nbspShow Password<br>         
+            </div>  
+                
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </div>     
+  <script>function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }</script>
+<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
+<div id="id02" class="modal">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="avatar">
+            <img src="images/avatar.png" alt="Avatar">
+            <!-- <span class="glyphicon glyphicon-user"></span> -->
+          </div>				
+          <h4 class="modal-title">Sign Up</h4>	
+          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form class="form-grop" action="signup" method="post">
+            <div class="form-group">
+              <label for="uname"><b>UserName</b></label>
+              <input type="text" class="form-control" name="username" placeholder="Enter UserName" required><br>
+             </div>
+           <div class="form-group">
+             <label for="psw"><b>Password</b></label>
+             <input type="password" class="form-control" name="password" placeholder="Enter Password" required><br>
+            </div>      
+            <div class="form-group">
+                <label for="fullname"><b>Full Name</b></label>
+                <input type="text" class="form-control" name="fullname" placeholder="Enter Full Name" required><br>
+          </div>
+            <div class="form-group">
+                <label for="email"><b>Email</b></label>
+                <input type="email" name="email" placeholder="Enter Email" required><br>
+            </div> 
+            <div class="form-group">
+              <label for="mobile"><b>Mobile</b></label>
+              <input type="text" class="form-control" name="mobile" placeholder="Enter Mobile No" required><br>
+             </div> 
+             <div class="form-group">
+              <label for="city"><b>City</b></label>
+              <input type="text" name="city" placeholder="Enter City" required><br>
+           </div>
+            
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Sign Up</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>     
+
+
+
+
+<script>
+// Get the modal
+
+var modal = document.getElementById('id01');
+var modal2=document.getElementById('id02');
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+window.onclick=function(event){
+  if(event.target == modal2){
+    modal2.style.display= "none";
+  }
+}
+
+</script>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+     <div class="col-sm-12">
+        <img class="img-responsive" src="images/image.jpg" width="100%"style="height:600px;" margin-left="auto"/> 
+     </div>
+  </div>
+  <div class="row">
+    <h3 style="margin-left: 1%;font-size: 30px;;"> What we can do </h3>
+    <ul class="list-group" style="margin-left: 1%;font-size: 20px;font-family: Georgia, 'Times New Roman', Times, serif;">
+      <li>Exam sitting management system is an online application from which user can easily manage Alloted room details,Student details and
+        plan examination.
+      </li>
+      <li>User can save their previous Examination plan details.</li>
+      <li>User can manage the sitting arrangement of students according to their own choice.</li>
+      <li>For more information go to About us.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- <div class="jumbotron text-center" style="margin-bottom:0">
+  <p>@MCA MNNIT ALLAHABAD</p>
+</div> -->
+<div class="footer">
+  <p>@MCA MNNIT ALLAHABAD</p>
+</div>
+
+</body>
+</html>

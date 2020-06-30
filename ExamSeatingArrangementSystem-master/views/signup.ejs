@@ -1,0 +1,103 @@
+<!--don't use this page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("/images/image8.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+  </style>
+</head>
+<body onload="document.getElementById('id01').style.display='block'" style="width:auto;">
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Exam Seating Arrangement System</h1> 
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+         <li><a href="#">contact-us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--Modal Login form -->
+<div id="id01" class="modal">
+    
+    <form class="modal-content animate" action="signup" method="post">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+  
+      <div class="container-fluid">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" class="form-control" name="username" placeholder="Username" required><br>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" class="form-control" name="password" placeholder="Password" required><br>
+        <label for="RegNo."><b>Reg No.</b></label>
+        
+        <input type="text" name="regno" placeholder="Reg. NO." required><br>
+        <label for="email"><b>Email</b></label>
+        
+        <input type="text" name="email" placeholder="Email" required><br>
+        <input type="submit" class="btn btn-primary" value="submit"><br>
+        <br><br><a href="/" class="text-info">login here</a>
+  </div>
+  
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        
+      </div>
+    </form>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+      //window.location.href = "/"
+  }
+  </script>
+  
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <p>@MCA MNNIT ALLAHABAD</p>
+  </div>
+</body>
+</html>

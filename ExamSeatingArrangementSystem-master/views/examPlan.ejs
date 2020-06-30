@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* background-image: url("/images/image8.jpg"); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+}
+h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <!-- <marquee scrollamount="8" behavior="alternate"><h1 style="color:white;">Exam Seating Arrangement System</h1> </marquee> -->
+  <h1 style="color:white;">Exam Seating Arrangement System</h1>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/userhome">Home</a></li>
+        <li><a href="/examPlan">Add My Plan</a></li>
+        <li><a href="/ExamRoomDetails">Add Room Details</a></li>
+        <li><a href="/StudentDetails">Add Student Details</a></li>
+        <li><a href="/assignallocation">Assign Allocation </a></li>
+        <!-- <li><a href="/viewallocation">View Allocation </a></li> -->
+        <li><a href="/updateprofile">update profile</a></li>
+        <li><div class="dropdown">
+            <button style="margin-top:8px;"class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Plan Details
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="/viewexam">View Exam Details</a></li>
+              <li><a href="/viewroom">View Rooms Details</a></li>
+              <!-- <li><a href="/students">View students Details</a></li> -->
+            </ul>
+          </div> 
+         </li>
+        <li><a href="/logout" >
+          <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+       <div class="col-sm-6">
+          <h3 style="color: green;"><%= typeof msg != 'undefined' ? msg : '' %></h3>
+         <h2>Enter The Examination Details:</h2><br>
+          <form action="examplan" method="POST">
+              <div class="form-group">
+                <label>Exam name</label>
+                <input  type="text" class="form-control" name="examname" placeholder="Enter exam name">
+              </div>
+              <div class="form-group">
+                <label >Exam Date</label>
+                <input type="date" class="form-control" name="date" placeholder="Date">
+              </div>
+              <div class="form-group">
+                  <label >Exam Time</label>
+                  <input type="text" class="form-control" name="time" placeholder="Time AM/PM">
+                </div>
+                <div class="form-group">
+                  <label for="clg"><b>Collage Name</b></label>
+                  <input type="text"  class="form-control" name="clgname" placeholder="Enter Collage Name">
+               </div>          
+              <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" class="form-control" name="address" placeholder="Enter Address">
+               </div>
+              <div class="form-group row">
+                  <div class="col-xs-4">
+                      <label>City</label>
+                      <input type="text"  class="form-control" name="city" placeholder="Enter City" >
+                  </div>
+                  <div class="col-xs-4">
+                      <label>Pin Code</label>
+                      <input type="text" class="form-control" name="pcode" placeholder="Enter Pin Code">
+                  </div>
+                  <div class="col-xs-4">
+                      <label>State</label>
+                      <input type="text" class="form-control" name="state" placeholder="Enter State">
+                  </div>
+                </div>
+
+              <button type="submit" value="examdetail" class="btn btn-primary">Submit</button>
+      </form> 
+       </div>
+       <div class="col-sm-6">
+        <img src="images/students.jpg" width="600">
+        <img src="images/examcalendar.jpeg" width="600">
+      </div>
+    </div>
+ </div>
+<br><br>
+
+ <div class="footer">
+    <p>@MCA MNNIT ALLAHABAD</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+        .button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+        table{ 
+            width: 70%;
+            font: 17px Calibri;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+
+
+      
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("/images/image8.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+}
+h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+    </style>
+</head>
+<body onload="createTable()">
+
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <h1 style="color:white;">Exam Seating Arrangement System</h1> 
+  </div>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/userhome">Home</a></li>
+          <li><a href="/examPlan">Add My Plan</a></li>
+          <li><a href="/ExamRoomDetails">Add Room Details</a></li>
+          <li><a href="/StudentDetails">Add Student Details</a></li>
+          <li><a href="/assignallocation">Assign Allocation </a></li>
+          <!-- <li><a href="/viewallocation">View Allocation </a></li> -->
+          <li><a href="/updateprofile">update profile</a></li>
+          <li><div class="dropdown">
+              <button style="margin-top:8px;"class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Plan Details
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="/viewexam">View Exam Details</a></li>
+                <li><a href="/viewroom">View Rooms Details</a></li>
+                <!-- <li><a href="/students">View students Details</a></li> -->
+              </ul>
+            </div> 
+           </li>
+          <li><a href="/logout" >
+            <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <h3 style="color: green;"><%= typeof msg != 'undefined' ? msg : '' %></h3>
+            
+    <p>
+        <input type="button" class="button" id="addRow" value="Add New Room" onclick="addRow()">
+   </p>
+
+    <!--THE CONTAINER WHERE WE'll ADD THE DYNAMIC TABLE-->
+    <form action="examroomdetails" method="POST">
+    <div id="cont"></div>
+    <div id="result" name="rs"></div>  
+    <p><input type="submit" class="btn btn-primary" id="bt" value="Submit Data" /></p>
+  </form>
+    <!-- <p>(See the result in the console window.)</p> -->
+         </div>
+      </div>
+    </div>
+
+</body>
+
+<script>
+    // ARRAY FOR HEADER.
+    var arrHead = new Array();
+    arrHead = ['', 'Floor', 'Room Name', 'Rows','Length'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
+
+    // FIRST CREATE A TABLE STRUCTURE BY ADDING A FEW HEADERS AND
+    // ADD THE TABLE TO YOUR WEB PAGE.
+    function createTable() {
+        var empTable = document.createElement('table');
+        empTable.setAttribute('id', 'empTable');            // SET THE TABLE ID.
+        empTable.setAttribute('class', 'table table-responsive-sm');
+        var tr = empTable.insertRow(-1);
+
+        for (var h = 0; h < arrHead.length; h++) {
+            var th = document.createElement('th');          // TABLE HEADER.
+            th.innerHTML = arrHead[h];
+            tr.appendChild(th);
+        }
+
+        var div = document.getElementById('cont');
+        div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
+    }
+
+    // ADD A NEW ROW TO THE TABLE.s
+    function addRow() {
+        var empTab = document.getElementById('empTable');
+
+        var rowCnt = empTab.rows.length;        // GET TABLE ROW COUNT.
+        var tr = empTab.insertRow(rowCnt);      // TABLE ROW.
+        tr = empTab.insertRow(rowCnt);
+
+        for (var c = 0; c < arrHead.length; c++) {
+            var td = document.createElement('td');          // TABLE DEFINITION.
+            td = tr.insertCell(c);
+
+            if (c == 0) {           // FIRST COLUMN.
+                // ADD A BUTTON.
+                var button = document.createElement('input');
+
+                // SET INPUT ATTRIBUTE.
+                button.setAttribute('type', 'button');
+                button.setAttribute('value', 'Remove');
+                button.setAttribute('class', 'btn btn-danger');
+                
+
+                // ADD THE BUTTON's 'onclick' EVENT.
+                button.setAttribute('onclick', 'removeRow(this)');
+
+                td.appendChild(button);
+            }else if(c == 3){
+                // CREATE AND ADD TEXTBOX IN EACH CELL.
+                var ele = document.createElement('input');
+                ele.setAttribute('type', 'number');
+                ele.setAttribute('value', 0);
+                ele.setAttribute('name', 'row');
+                ele.setAttribute('class', 'form-control');
+
+                td.appendChild(ele);
+
+            }else if(c == 4){
+                // CREATE AND ADD TEXTBOX IN EACH CELL.
+                var ele = document.createElement('input');
+                ele.setAttribute('type', 'number');
+                ele.setAttribute('value', '0');
+                ele.setAttribute('name', 'length');
+                ele.setAttribute('class', 'form-control');
+                
+                td.appendChild(ele);
+            }
+            else if(c==1){
+                // CREATE AND ADD TEXTBOX IN EACH CELL.
+                var ele = document.createElement('input');
+                ele.setAttribute('type', 'text');
+                ele.setAttribute('value', '');
+                ele.setAttribute('name', 'floor');
+                ele.setAttribute('class', 'form-control');
+          
+                td.appendChild(ele);
+            }else {
+                // CREATE AND ADD TEXTBOX IN EACH CELL.
+                var ele = document.createElement('input');
+                ele.setAttribute('type', 'text');
+                ele.setAttribute('value', '');
+                ele.setAttribute('name', 'roomname');
+                ele.setAttribute('class', 'form-control');
+                
+                td.appendChild(ele);
+            }
+            
+
+        }
+    }
+
+    // DELETE TABLE ROW.
+    function removeRow(oButton) {
+        var empTab = document.getElementById('empTable');
+        empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);       // BUTTON -> TD -> TR.
+    }
+
+    // EXTRACT AND SUBMIT TABLE DATA.
+    function submit() {
+        var myTab = document.getElementById('empTable');
+        var values = new Array();
+        var rs=document.getElementById('result');
+        // LOOP THROUGH EACH ROW OF THE TABLE.
+        for (row = 1; row < myTab.rows.length - 1; row++) {
+            for (c = 0; c < myTab.rows[row].cells.length; c++) {   // EACH CELL IN A ROW.
+
+                var element = myTab.rows.item(row).cells[c];
+                if (element.childNodes[0].getAttribute('type') == 'text') {
+                    values.push(element.childNodes[0].value);
+                }else if(c!=0){
+                  values.push(element.childNodes[0].value);   
+                }
+            }
+        }
+        
+        // SHOW THE RESULT IN THE CONSOLE WINDOW.
+        console.log(values);
+        rs.innerHTML=values;
+    }
+</script>
+
+<div class="footer">
+    <p>@MCA MNNIT ALLAHABAD</p>
+</div>
+</html>

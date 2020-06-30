@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("/images/image8.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+    h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+}
+
+  </style>
+
+
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1 style="color:white;">Exam Seating Arrangement System</h1> 
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/userhome">Home</a></li>
+        <li><a href="/examPlan">Add My Plan</a></li>
+        <li><a href="/ExamRoomDetails">Add Exam Room Details</a></li>
+        <li><a href="/StudentDetails">Add Student Deatils</a></li>
+        <li><a href="/assignallocation">Assign Allocation </a></li>
+        <!-- <li><a href="/viewallocation">View Allocation </a></li> -->
+        <li><a href="/updateprofile">update profile</a></li>
+        <li><a href="/logout" >
+          <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+    
+     <table border="3" style="width:100%;">
+      <tr>
+          <td colspan = "5"> 
+            <H1><FONT COLOR="DARKCYAN"><CENTER>MNNIT ALLAHABAD</FONT></H1>
+            <H1><FONT COLOR="DARKCYAN"><CENTER>Mid sem (aug-sep 2019)</FONT></H1>
+            <h3 style="text-align: left;">Date:31-10-2019</h3>
+            <h3 style="text-align: center;">Time:3:30 PM</h3>
+            <h3 style="text-align: right;">Room No:101</h3>
+          </td>
+      </tr>
+      <tr>
+        <th>Row1</th>
+        <th>Row2</th>
+        <th>Row3</th>
+        <th>Row4</th>
+        <th>Row5</th>
+      </tr>
+      <% console.log(roomallotment) %>   
+       
+        </table>
+     <br><br><br><br>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="footer">
+    <p>@MCA MNNIT ALLAHABAD</p>
+</div>
+</body>
+</html>

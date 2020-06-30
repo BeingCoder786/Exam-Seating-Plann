@@ -1,0 +1,69 @@
+#header {
+    background-color:palegoldenrod;
+    color: black;
+    text-align: center;
+  }
+  h3{
+    text-align: left;
+    margin-left: 20%;;
+  }
+  #city{
+    font-size:30px;
+  }
+  #college{
+    font-size:60px;
+  }
+  #heading {
+    background-color: green;
+    font-size: medium;
+  }
+  #roomname{
+    margin-left: 15%;
+    font-size:30px;
+  }
+  p{
+    text-align: center;
+  }  
+  th, td {
+    text-align: center;
+  }
+  tr{
+    color: indigo;
+    background-color: lawngreen;
+  }
+  body{
+    /* background-image: url("http://eskipaper.com/images/orange-light-background-1.jpg"); */
+    height: 100%;
+    border-style: ridge;
+    margin: 20px;
+    padding: 20px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat:repeat;
+  background-size: cover;
+  }
+  .btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: RoyalBlue;
+  }
+
+  .previous {
+    background-color:#4CAF50;
+    color: black;
+  }
+  a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+  }

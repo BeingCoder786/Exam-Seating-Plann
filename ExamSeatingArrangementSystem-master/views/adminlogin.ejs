@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+ 
+  <style>
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("/images/image8.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+   height: 40px;
+}
+    h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1 style="color:white;">Exam Seating Arrangement System</h1> 
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contactus">Contact-Us</a></li>
+        <li><a href="/adminlogin">Admin</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row">
+            <div class="col-md-6">
+              <!-- <img class="img-responsive" src="images/adminimage.jpg" height="50px"> -->
+              <img src="images/students.jpg" alt="..." class="img-thumbnail">
+            </div>          
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="login-form" class="form" action="adminlogin" method="post">
+                        <h3 class="text-center text-info">Admin Login</h3>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Admin name:</label><br>
+                            <input type="text" name="adminname" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Password:</label><br>
+                            <input type="text" name="password" id="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
+                        </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+  <p>@MCA MNNIT ALLAHABAD</p>
+</div>
+</body>
+</html>

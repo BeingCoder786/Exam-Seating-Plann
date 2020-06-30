@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/login.css' />
+  <link rel="stylesheet" href="/stylesheets/contactus.css"/>
+  <link rel='stylesheet' href='stylesheets/modals.css' />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet"> -->
+
+  <style>
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("/images/image8.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+   height: 40px;
+}
+    h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  }
+  
+  </style>
+  </head>
+<body>
+  <style>
+  .jumbotron 
+  {
+  background-color:#007880;
+  color:turquoise;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-image: url("/images/header5.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  }
+  .navbar
+  {
+    background-color:#005995;
+  }
+  
+</style>
+<div class="jumbotron text-center" style="margin-bottom:0" >
+  <h1 style="color:white;">Exam Seating Arrangement System</h1> 
+</div>
+<div class="navbar navbar-inverse " role="navigation">
+    <div class="container-fluid" style="height: 40%;">
+        <div class="navbar-header">
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+               </button> <a class="navbar-brand" href="/">Home</a> 
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+             <li><a href="/about">About</a></li>
+             <li><a href="/contactus">Contact-Us</a></li>
+             <li><a href="/adminlogin">Admin</a></li>
+         
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3 " onclick="document.getElementById('id01').style.display='block'" style="margin-top: 15%;">Login</button> </li>
+
+                <li>
+                        <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" onclick="document.getElementById('id02').style.display='block'" style="margin-top: 10%;margin-left: 10%;">Register</button> </li>
+             </li>
+            </ul>
+        </div>
+    </div>
+</div>
+ 
+<h3><%= typeof msg != 'undefined' ? msg : '' %></h3>
+<!-- Modal HTML -->
+<!--Modal Login form -->
+
+<div id="id01" class="modal">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="avatar">
+            <img src="images/avatar.png" alt="Avatar">
+            <!-- <span class="glyphicon glyphicon-user"></span> -->
+          </div>				
+          <h4 class="modal-title">Log In</h4>	
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form action="login" method="post">
+            <div class="form-group">
+                <label for="uname"><b>UserName</b></label>
+                <input type="text" class="form-control" name="username" placeholder="Enter UserName" required><br>
+            </div>
+            <div class="form-group">
+                <label for="psw"><b>Password</b></label>
+                <input type="password" class="form-control" name="password" placeholder="Password" required><br>          
+            </div>        
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </div>     
+  
+<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
+<div id="id02" class="modal">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="avatar">
+          <img src="images/avatar.png" alt="Avatar">
+          <!-- <span class="glyphicon glyphicon-user"></span> -->
+        </div>				
+        <h4 class="modal-title">Sign Up</h4>	
+        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form class="form-grop" action="signup" method="post">
+          <div class="form-group">
+            <label for="uname"><b>UserName</b></label>
+            <input type="text" class="form-control" name="username" placeholder="Enter UserName" required><br>
+           </div>
+         <div class="form-group">
+           <label for="psw"><b>Password</b></label>
+           <input type="password" class="form-control" name="password" placeholder="Enter Password" required><br>
+          </div>      
+          <div class="form-group">
+              <label for="fullname"><b>Full Name</b></label>
+              <input type="text" class="form-control" name="fullname" placeholder="Enter Full Name" required><br>
+        </div>
+          <div class="form-group">
+              <label for="email"><b>Email</b></label>
+              <input type="text" name="email" placeholder="Enter Email" required><br>
+          </div> 
+          <div class="form-group">
+            <label for="mobile"><b>Mobile</b></label>
+            <input type="text" class="form-control" name="mobile" placeholder="Enter Mobile No" required><br>
+           </div> 
+           <div class="form-group">
+            <label for="city"><b>City</b></label>
+            <input type="text" name="city" placeholder="Enter City" required><br>
+         </div>
+          
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Sign Up</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>     
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+var modal2=document.getElementById('id02');
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+window.onclick=function(event){
+  if(event.target == modal2){
+    modal2.style.display= "none";
+  }
+}
+
+</script>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div  class="col-sm-4" style="margin-left:10% ;">
+              <h2>Message Us </h2>
+              <h4> Please fill out the quick form and we will contact you </h4>
+              <form class="form-group" action="#">
+                <div class="form-group col-sm-6">
+                  <span class="glyphicon glyphicon-user">
+                  <input class="form-control" id="icon_prefix" type="text" class="validate" placeholder="Name"></span>
+                </div>
+                <div class="form-group col-sm-6">
+                  <span class="glyphicon glyphicon-earphone"></span>
+                  <input id="icon_telephone" class="form-control" type="tel" class="validate" placeholder="Mob. No.">
+                </div><br>
+                <div class="form-group col-sm-12">
+                  <i class="glyphicon glyphicon-envelope"></i>
+                 <input  class="form-control" id="email" type="email" class="validate" placeholder="Email">
+                 
+                </div>
+                <div class="form-grop col-sm-12">
+                    <span >Message</span>
+                  <textarea class="form-control" id="textarea1" class="materialize-textarea"></textarea>
+                </div>
+                <div class="col-sm-5">
+                <button style="margin-top: 5%;" type="submit" value="submit" class="btn">Send <i class="glyphicon glyphicon-send"></i></button>
+                </div>
+              </form>
+          </div>
+          <div class="col-sm-6">
+              <div class="col-sm-12">
+                <span class="glyphicon glyphicon-map-marker" style="font-size: 500%;margin-left: 60%;margin-top: 10%;"></span>
+                <h4 style="margin-left: 60%;">Address</h4>
+                <h5 style="margin-left: 55%;">P.G. Hostel , MNNIT</h5>
+                <h5 style="margin-left: 55%;">Allahabad (U.P.)</h5>
+              </div>
+              <div class="col-sm-12">
+                  <h4 style="margin-left: 60%;margin-top: 7%;">Contact us</h4>
+                  <h5><span class="glyphicon glyphicon-earphone" aria-hidden="true" style="font-size: 100%;margin-left: 55%;"></span> 123-456-789</h5>
+                  <h5><span class="glyphicon glyphicon-envelope" style="font-size: 100%;margin-left: 55%;"></span> MNNIT@gmail.com</h5>
+                </div>
+          </div>
+        </div>
+      </div>
+   
+
+      <div class="footer">
+        <p>@MCA MNNIT ALLAHABAD</p>
+      </div>
+
+
+</body>
+</html>
+
+
+
+
+

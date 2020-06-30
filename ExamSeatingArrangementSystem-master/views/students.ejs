@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("/images/image8.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+}
+
+h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+  </style>
+
+
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1 style="color:white;">Exam Seating Arrangement System</h1> 
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/userhome">Home</a></li>
+        <li><a href="/examPlan">Add My Plan</a></li>
+        <li><a href="/ExamRoomDetails">Add Exam Room Details</a></li>
+        <li><a href="/StudentDetails">Add Student Deatils</a></li>
+        <li><a href="/assignallocation">Assign Allocation </a></li>
+        <!-- <li><a href="/viewallocation">View Allocation </a></li> -->
+        <li><a href="/updateprofile">update profile</a></li>
+        <li><div class="dropdown">
+                <button style="margin-top:8px;"class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Plan Details
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="/viewexam">View Exam Details</a></li>
+                  <li><a href="/viewroom">View Rooms Details</a></li>
+                  <li><a href="/students">View students Details</a></li>
+                </ul>
+              </div> 
+             </li>
+        <li><a href="/logout" >
+          <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <br>
+       <h4>Students Details:</h4>
+       <br>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Reg No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Class</th>
+                <th scope="col">Semester</th>
+                <th scope="col">Branch</th>
+              </tr>
+            </thead>
+            <% data.forEach(function(row){ %>
+                <tbody>
+                  <tr>
+                    <td><%= row.regno %></td>
+                    <td><%= row.name %></td>
+                    <td><%= row.class %></td>
+                    <td><%= row.semester %></td>
+                    <td><%= row.branch %></td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+          </table>
+    </div>
+  </div>
+</div>
+<br><br><br>
+
+
+<div class="footer">
+    <p>@MCA MNNIT ALLAHABAD</p>
+</div>
+</body>
+</html>

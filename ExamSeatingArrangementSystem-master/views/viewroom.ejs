@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <style>
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* background-image: url("/images/image8.jpg"); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+}
+ h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+.table-wrapper {
+		width: 900px;
+		margin: 30px auto;
+        background:#F0FFFF;
+        padding: 20px;	
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .table-title {
+        padding-bottom: 10px;
+        margin: 0 0 10px;
+    }
+    .table-title h2 {
+        margin: 6px 0 0;
+        font-size: 22px;
+    }
+    .table-title .add-new {
+        float: right;
+		height: 30px;
+		font-weight: bold;
+		font-size: 15px;
+		text-shadow: none;
+		width: 200px;
+		border-radius: 50px;
+		line-height: 13px;
+    }
+	.table-title .add-new i {
+		margin-right: 4px;
+	}
+    table.table {
+        table-layout: fixed;
+    }
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+    }
+    table.table th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    table.table th:last-child {
+        width: 100px;
+    }
+    table.table td a {
+		cursor: pointer;
+        display: inline-block;
+        margin: 0 5px;
+		min-width: 24px;
+    }    
+	table.table td a.add {
+        color: #27C46B;
+    }
+    table.table td a.edit {
+        color: #FFC107;
+    }
+    table.table td a.delete {
+        color: #E34724;
+    }
+    table.table td i {
+        font-size: 19px;
+    }
+	table.table td a.add i {
+        font-size: 24px;
+    	margin-right: -1px;
+        position: relative;
+        top: 3px;
+    }    
+    table.table .form-control {
+        height: 32px;
+        line-height: 32px;
+        box-shadow: none;
+        border-radius: 2px;
+    }
+	table.table .form-control.error {
+		border-color: #f50000;
+	}
+	table.table td .add {
+		display: none;
+	}
+
+  </style>
+
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1 style="color:white;">Exam Seating Arrangement System</h1> 
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/userhome">Home</a></li>
+        <li><a href="/examPlan">Add My Plan</a></li>
+        <li><a href="/ExamRoomDetails">Add Room Details</a></li>
+        <li><a href="/StudentDetails">Add Student Details</a></li>
+        <li><a href="/assignallocation">Assign Allocation </a></li>
+        <!-- <li><a href="/viewallocation">View Allocation </a></li> -->
+        <li><a href="/updateprofile">update profile</a></li>
+        <li><div class="dropdown">
+            <button style="margin-top:8px;"class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Plan Details
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="/viewexam">View Exam Details</a></li>
+              <li><a href="/viewroom">View Rooms Details</a></li>
+              <!-- <li><a href="/students">View students Details</a></li> -->
+            </ul>
+          </div> 
+         </li>
+        <li><a href="/logout" >
+          <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <!-- <h4>Rooms Details:</h4> -->
+        <div class="container">
+          <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8"><h2>Rooms Details:</h2></div>
+                <div class="col-sm-4">
+                   <a href="/ExamRoomDetails"><button type="button" class="btn btn-info add-new"> Add New Room Details</button></a>
+                </div>
+            </div>
+        </div>
+              <table class="table table-bordered">
+                  <thead>
+                      <tr>
+                        <th>Floor</th>
+                       <th >Room Name</th>
+                       <th >Row</th>
+                      <th >Length</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                      </tr>
+                  </thead>
+                  <% data.forEach(function(row){ %>
+                  <tbody>
+                      <tr>
+                    <td id="f"><%= row.floor %></td>
+                    <td id="rn"><%= row.roomname %></td>
+                    <td id="r"><%= row.row %></td>
+                    <td id="l"><%= row.length %></td>
+                          <td>
+                           <a href="roomedit/<%= row.rid %>"><button class="btn btn-info btn-sm"  >Edit</button></a>
+                          </td>
+                          <td>
+                           <a href="roomdel/<%= row.rid %>" ><button class="btn btn-danger btn-sm" >Delete</button></a>
+                           
+                          </td>
+                      </tr>
+                      <% }) %>
+                     
+                  </tbody>
+              </table>
+          </div>
+          </div>
+        </div>
+      </div>
+  </div>
+<div class="footer">
+    <p>@MCA MNNIT ALLAHABAD</p>
+</div>
+</body>
+</html>
+

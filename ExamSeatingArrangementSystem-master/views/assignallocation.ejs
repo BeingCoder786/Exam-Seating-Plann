@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='stylesheets/style.css'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron 
+    {
+    background-color:#007880;
+    color:turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("/images/image8.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    }
+    .navbar
+    {
+      background-color:#005995;
+    }
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #007880;
+   color: white;
+   text-align: center;
+}
+h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+  </style>
+
+
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1 style="color:white;">Exam Seating Arrangement System</h1> 
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/userhome">Home</a></li>
+        <li><a href="/examPlan">Add My Plan</a></li>
+        <li><a href="/ExamRoomDetails">Add Room Details</a></li>
+        <li><a href="/StudentDetails">Add Student Details</a></li>
+        <li><a href="/assignallocation">Assign Allocation </a></li>
+        <!-- <li><a href="/viewallocation">View Allocation </a></li> -->
+        <li><a href="/updateprofile">update profile</a></li>
+        <li><div class="dropdown">
+            <button style="margin-top:8px;"class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Plan Details
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="/viewexam">View Exam Details</a></li>
+              <li><a href="/viewroom">View Rooms Details</a></li>
+              <!-- <li><a href="/students">View students Details</a></li> -->
+            </ul>
+          </div> 
+         </li>
+        <li><a href="/logout" >
+          <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8"  style="background-color:white;" >
+            <h3 style="color: green;"><%= typeof msg != 'undefined' ? msg : '' %></h3>
+            <h2>Select The Courses For Seat Allotment</h2><br>
+             <form action="assignseat" method="POST">
+                <table class="table" id="coursetable">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th>Courses </th>
+                            <th>Semester </th>
+                            <th>Select </th>
+                        </tr>
+                    </thead>
+                    <% data.forEach(function(row){ %>
+                    <tbody>
+                        <tr>
+                            <td><input style="border:none" name="course" value=<%= row.class %> readonly></td>
+                            <td ><input style="border:none" name="sem" value=<%= row.semester %> readOnly></td>
+                            <td><input type="checkbox" value=<%= row.class + row.semester %> name="ch"></td>                        
+                        </tr>
+                    </tbody>
+                    <% }) %>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td><input  type="checkbox" onchange="checkAll(this)" name="chk[]"/>&nbsp;Select All</td>
+                    </tr>
+                </table> 
+                    
+                 <button type="submit" class="btn btn-bg-success text-white">Submit</button>
+              </form> 
+         <!-- <button onclick="store()" >Add more Pattern</button> -->
+                 
+        </div>
+      </div>
+
+</div>
+<br><br><br>
+<script>function checkAll(ele) {
+  var checkboxes = document.getElementsByTagName('input');
+  if (ele.checked) {
+      for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].type == 'checkbox') {
+              checkboxes[i].checked = true;
+          }
+      }
+  } else {
+      for (var i = 0; i < checkboxes.length; i++) {
+          console.log(i)
+          if (checkboxes[i].type == 'checkbox') {
+              checkboxes[i].checked = false;
+          }
+      }
+  }
+}</script>
+
+<div class="footer">
+    <p>@MCA MNNIT ALLAHABAD</p>
+</div>
+<script type="text/javascript">
+  
+  function check(){
+    var tb=document.getElementById('coursetable');
+    var a=[]
+    for(var i=1;i<tb.rows.length;i++){
+         if(tb.rows[i].cells[2].childNodes[0].checked){
+           var course=tb.rows[i].cells[0].innerHTML;
+           var sem=tb.rows[i].cells[1].innerHTML;
+          a.push({course,sem})
+         }
+    }
+   console.log(a)
+  }
+
+</script>
+</body>
+</html>
